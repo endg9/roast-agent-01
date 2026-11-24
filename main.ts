@@ -33,11 +33,16 @@ if (charCount < 1 || charCount > 200) {
   fail(`entry must be 1-200 characters, got ${charCount}`);
 }
 
-// Load-bearing specifics: the roast only works as an agent mishap.
-for (const required of ["grader", "parent chat", "'K'"]) {
+// Load-bearing specifics: the roast only works as an agent apology loop.
+for (const required of ["apologized", "summarized the apology", "long version"]) {
   if (!line.includes(required)) {
     fail(`entry must mention ${required}`);
   }
+}
+
+// The twist must pay off on the last words — the agent offers the long version.
+if (!line.endsWith("long version.")) {
+  fail("entry must end with the payoff 'long version.'");
 }
 
 const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? join(import.meta.dirname, "output");
